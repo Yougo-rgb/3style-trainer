@@ -1,12 +1,8 @@
 import { state } from "./state.js";
 
 export function loadCommutators(edges, corners) {
-    if (state.mode === "edges" || state.mode === "all") {
-        state.commutators.edges = edges;
-    }
-    if (state.mode === "corners" || state.mode === "all") {
-        state.commutators.corners = corners;
-    }
+    state.commutators.edges = edges;
+    state.commutators.corners = corners;
 }
 
 export function getRandomCommByMode(buffer, mode) {
@@ -42,7 +38,6 @@ export function getRandomCommByMode(buffer, mode) {
 
     state.scrambleComms.push(comm);
     state.scramble += comm.algorithm + " ";
-    console.log(state);
     
     return comm;
 }

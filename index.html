@@ -6,20 +6,52 @@
     <link rel="stylesheet" href="./styles/main.css">
     <title>3-Style Trainer</title>
 </head>
-<script type="module" src="src/app.js"></script>
-<script src="https://cdn.cubing.net/v0/js/cubing/twisty" type="module"></script>
-<script src="https://unpkg.com/cube-solver/dist/bundle.js" type="module"></script>
+
 <body>
     <div id="app">
-        <header>
 
+        <header>
+            <div id="scramble">[Scramble]</div>
         </header>
 
         <main>
-            <div id="cube"></div>
-            <div id="scramble"></div>
-            <button id="newScramble" onclick="init()">New</button>
+
+            <aside id="leftPanel">
+                <h3>Mode</h3>
+                <button id="edgeMode" class="selectedMode">Edge</button>
+                <button id="cornerMode">Corner</button>
+                <button id="allMode">All</button>
+
+                <h3>Buffer</h3>
+                <select id="edgeBufferSelect"></select>
+                <select id="cornerBufferSelect"></select>
+            </aside>
+
+            <section id="centerPanel">
+
+                <div id="cube">Loading</div>
+
+                <button id="newScramble">New</button>
+
+                <div id="credit">
+                    <p>3-Style Trainer <br> © 2026 Hugo Pozzi</p>
+                </div>
+
+            </section>
+
+            <aside id="rightPanel">
+                <h3>Show/Hide</h3>
+                <button id="hideCube">Cube</button>
+                <button id="hideLeftPanel">Settings</button>
+            </aside>
+
         </main>
+
     </div>
+
+    <script type="module" src="src/app.js"></script>
+    <script src="https://cdn.cubing.net/v0/js/cubing/twisty" type="module"></script>
+    <script src="https://unpkg.com/cube-solver/dist/bundle.js" type="module"></script>
+
 </body>
 </html>

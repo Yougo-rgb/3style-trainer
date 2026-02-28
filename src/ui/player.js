@@ -5,7 +5,7 @@ export function renderCube(alg, container) {
 
     const player = new TwistyPlayer({
         puzzle: "3x3x3",
-        alg: alg,
+        experimentalSetupAlg: alg,
         hintFacelets: "none",
         background: "none"
     });

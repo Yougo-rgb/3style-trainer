@@ -1,5 +1,5 @@
 export const state = {
-    mode: "all",
+    mode: "edges",
     edgeBuffer: "UF",
     cornerBuffer: "UFR",
     excludes: new Set(),
