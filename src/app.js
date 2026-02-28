@@ -1,7 +1,6 @@
 import { loadCommutators } from "./core/commutatorEngine.js";
 import { generateTrainingScramble } from "./core/scrambleGenerator.js";
 import { renderCube, displayAlg } from "./ui/player.js";
-import { state } from "./core/state.js";
 
 async function init() {
     const [edges, corner] = await Promise.all([
@@ -11,7 +10,13 @@ async function init() {
 
     loadCommutators(edges, corner);
 
-    const scramble = generateTrainingScramble(5);
+    document.getElementById("newScramble").onclick = start;
+    
+    start()
+}
+
+function start() {
+    const scramble = generateTrainingScramble(5, 3);
 
     renderCube(scramble, document.getElementById("cube"));
     displayAlg(scramble, document.getElementById("scramble"));

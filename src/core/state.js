@@ -1,5 +1,5 @@
 export const state = {
-    mode: "edges",
+    mode: "corners",
     edgeBuffer: "UF",
     cornerBuffer: "UFR",
     buffer: "UF",
@@ -9,6 +9,6 @@ export const state = {
     scrambleComms: [],
     commutators: {
         edges: [],
-        corner: []
+        corners: []
     }
 };
