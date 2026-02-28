@@ -3,12 +3,12 @@ import { generateTrainingScramble } from "./core/scrambleGenerator.js";
 import { renderCube, displayAlg } from "./ui/player.js";
 
 async function init() {
-    const [edges, corner] = await Promise.all([
+    const [edges, corners] = await Promise.all([
         fetch("data/commutator/edges.json").then(r => r.json()),
         fetch("data/commutator/corners.json").then(r => r.json())
     ]);
 
-    loadCommutators(edges, corner);
+    loadCommutators(edges, corners);
 
     document.getElementById("newScramble").onclick = start;
     

@@ -1,9 +1,8 @@
 export const state = {
-    mode: "corners",
+    mode: "all",
     edgeBuffer: "UF",
     cornerBuffer: "UFR",
-    buffer: "UF",
-    ban: new Set(),
+    excludes: new Set(),
     scramble: "",
     shortScramble: "",
     scrambleComms: [],

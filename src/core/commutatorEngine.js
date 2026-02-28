@@ -1,43 +1,48 @@
 import { state } from "./state.js";
 
 export function loadCommutators(edges, corners) {
-    state.commutators.edges = edges;
-    state.commutators.corners = corners;
+    if (state.mode === "edges" || state.mode === "all") {
+        state.commutators.edges = edges;
+    }
+    if (state.mode === "corners" || state.mode === "all") {
+        state.commutators.corners = corners;
+    }
 }
 
-export function getRandomComm(buffer, mode) {
-    const list = state.commutators[state.mode];
+export function getRandomCommByMode(buffer, mode) {
+    const list = state.commutators[mode];
 
     const filtered = list.filter(e =>
         e.target.includes(buffer) &&
-        [...state.ban].every(p => !e.target.includes(p))
+        [...state.excludes].every(p => !e.target.includes(p))
     );
     
     if (!filtered.length) return null;
 
     const comm = filtered[Math.floor(Math.random() * filtered.length)];
 
-    if (mode === "edge"){
+    if (mode === "edges"){
         comm.target.forEach( e=> {
             const allBuffers = edge_piece_converter[buffer];
 
             if (!allBuffers.includes(e)) {
-                if (!state.ban.has(e)) state.ban.add(e);
+                if (!state.excludes.has(e)) state.excludes.add(e);
             }
         });
     } 
-    if (mode === "corner") {
+    if (mode === "corners") {
         comm.target.forEach( e=> {
             const allBuffers = corner_piece_converter[buffer];
 
             if (!allBuffers.includes(e)) {
-                if (!state.ban.has(e)) state.ban.add(e);
+                if (!state.excludes.has(e)) state.excludes.add(e);
             }
         });
     }
 
     state.scrambleComms.push(comm);
     state.scramble += comm.algorithm + " ";
+    console.log(state);
     
     return comm;
 }

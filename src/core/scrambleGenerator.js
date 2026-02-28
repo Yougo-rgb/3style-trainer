@@ -1,5 +1,5 @@
 import { state } from "./state.js";
-import { getRandomComm } from "./commutatorEngine.js";
+import { getRandomCommByMode } from "./commutatorEngine.js";
 import { solveScramble, invertScramble} from "./solver.js";
 
 export function generateTrainingScramble(edgeCount = 5, cornerCount = 3) {
@@ -7,10 +7,10 @@ export function generateTrainingScramble(edgeCount = 5, cornerCount = 3) {
     if (cornerCount > 3) cornerCount = 3;
     resetScramble();
 
-    if (state.mode === "edges") {
+    if (state.mode === "edges" || state.mode === "all") {
         generateEdgeScramble(edgeCount);
     }
-    if (state.mode === "corners") {
+    if (state.mode === "corners" || state.mode === "all") {
         generateCornerScramble(cornerCount);
     }
 
@@ -21,7 +21,7 @@ export function generateTrainingScramble(edgeCount = 5, cornerCount = 3) {
 
 function generateEdgeScramble(count) {
     for (let i = 0; i < count; i++) {
-        const comm = getRandomComm(state.edgeBuffer, "edge")
+        const comm = getRandomCommByMode(state.edgeBuffer, "edges")
         if (!comm) break;
     }
 
@@ -30,8 +30,7 @@ function generateEdgeScramble(count) {
 
 function generateCornerScramble(count) {
     for (let i = 0; i < count; i++) {
-        const comm = getRandomComm(state.cornerBuffer, "corner")
-        console.log(comm)
+        const comm = getRandomCommByMode(state.cornerBuffer, "corners")
         if (!comm) break;
     }
 
@@ -42,5 +41,5 @@ export function resetScramble() {
     state.scramble = "";
     state.shortScramble = "";
     state.scrambleComms = [];
-    state.ban.clear();
+    state.excludes.clear();
 }
