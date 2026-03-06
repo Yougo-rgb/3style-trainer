@@ -1,4 +1,4 @@
-import { TwistyPlayer } from "https://cdn.cubing.net/v0/js/cubing/twisty";
+import { TwistyPlayer } from "cubing/twisty";
 
 export function renderCube(alg, container) {
     container.innerHTML = "";

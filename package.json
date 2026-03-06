@@ -1,0 +1,30 @@
+{
+  "name": "3style-trainer",
+  "version": "1.0.0",
+  "description": "> A web tool to practice 3x3 blindfolded (BLD) solves in Edge, Corner, or All modes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yougo-rgb/3style-trainer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Yougo-rgb/3style-trainer/issues"
+  },
+  "homepage": "https://github.com/Yougo-rgb/3style-trainer#readme",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "cube-solver": "^2.4.1",
+    "cubing": "^0.63.3"
+  }
+}

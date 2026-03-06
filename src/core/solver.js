@@ -1,4 +1,5 @@
-import { Alg } from "https://cdn.cubing.net/v0/js/cubing/alg";
+import { Alg } from "cubing/alg";
+import * as cubeSolver from 'cube-solver';
 
 export function solveScramble(scramble) {
     cubeSolver.initialize('kociemba');
